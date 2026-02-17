@@ -13,13 +13,13 @@ public class Main {
 
 		Employee bean = ioc.getBean("emp1", Employee.class);
 		System.out.println(bean);
-		bean = ioc.getBean("emp1", Employee.class);
-		System.out.println(bean);
-		bean = ioc.getBean("emp1", Employee.class);
-		System.out.println(bean);
-		bean.setName("Shivam");
-		bean.setGender("Male");
-		System.out.println(bean);
+//		bean = ioc.getBean("emp1", Employee.class);
+//		System.out.println(bean);
+//		bean = ioc.getBean("emp1", Employee.class);
+//		System.out.println(bean);
+//		bean.setName("Shivam");
+//		bean.setGender("Male");
+//		System.out.println(bean);
 		
 //		bean.setName("Guest");
 //		System.out.println(bean);
