@@ -3,109 +3,43 @@ package com.my.spring.model;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
+@Component
+@Scope(value = "prototype")
 public class Employee {
 	
-	private int id;
+	private int id =101;
+	private String name="Guest";
+	private int salary = 10_000;
 	
-	private String name ,gender;
 	
-	private Address address;
+	private IAddress adddress;
 	
-	private List<Integer> myList;
-
-	private Set<Integer> setOfContacts;
-	private Map<Integer,String> map;
 
 	public Employee() {
-		super();
-		System.out.println("Employee.Employee()");
-		// TODO Auto-generated constructor stub
+
 	}
 
-	
-	
-
-	
-	public Employee(int id, String name, String gender, Address address, List<Integer> myList,
-			Set<Integer> setOfContacts, Map<Integer, String> map) {
+	public Employee(int id, String name, int salary) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.gender = gender;
-		this.address = address;
-		this.myList = myList;
-		this.setOfContacts = setOfContacts;
-		this.map = map;
+		this.salary = salary;
 	}
 
+	public Employee(IAddress address) {
+		this.adddress=address;
+	}
 	
-
-
-
-	public List<Integer> getMyList() {
-		return myList;
-	}
-
-
-
-
-
-	public void setMyList(List<Integer> myList) {
-		this.myList = myList;
-	}
-
-
-
-
-
-	public Set<Integer> getSetOfContacts() {
-		return setOfContacts;
-	}
-
-
-
-
-
-	public void setSetOfContacts(Set<Integer> setOfContacts) {
-		this.setOfContacts = setOfContacts;
-	}
-
-
-
-
-
-	public Map<Integer, String> getMap() {
-		return map;
-	}
-
-
-
-
-
-	public void setMap(Map<Integer, String> map) {
-		this.map = map;
-	}
-
-
-
-
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-		System.out.println("Employee.setAddress()");
-	}
-
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
-		System.out.println("Employee.setId()");
 		this.id = id;
 	}
 
@@ -114,32 +48,31 @@ public class Employee {
 	}
 
 	public void setName(String name) {
-		System.out.println("Employee.setName()");
 		this.name = name;
 	}
 
-	public String getGender() {
-		return gender;
+	public int getSalary() {
+		return salary;
 	}
 
-	public void setGender(String gender) {
-		System.out.println("Employee.setGender()");
-		this.gender = gender;
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
 
+	public IAddress getAdddress() {
+		return adddress;
+	}
 
-
-
+	@Autowired
+	@Qualifier(value = "address1")
+	public void setAdddress(IAddress adddress) {
+		this.adddress = adddress;
+	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", address=" + address + ", myList="
-				+ myList + ", setOfContacts=" + setOfContacts + ", map=" + map + "]";
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", adddress=" + adddress + "]";
 	}
-
-
-	
-
 
 	
 
